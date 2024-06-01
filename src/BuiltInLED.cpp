@@ -20,3 +20,15 @@ void BuiltInLED::blinkLEDTemp() noexcept {
     digitalWrite(pin, LOW);
     delay(blinkInterval);
 }
+
+void BuiltInLED::update() noexcept {
+    if (isBlinking && millis() - previousMillis >= blinkInterval) {
+        toggleLEDState();
+        previousMillis = millis();
+    }
+}
+
+void BuiltInLED::toggleLEDState() noexcept {
+    // Toggle LED state using bitwise XOR
+    PORTB ^= (1 << pin);
+}

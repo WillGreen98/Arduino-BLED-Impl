@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Arduino.h>
-
 class LED {
     protected:
         const uint8_t pin;
@@ -12,7 +11,7 @@ class LED {
     public:
         explicit LED(uint8_t pinNumber) noexcept;
         virtual ~LED() = default;
-        virtual void toggleBlinking() noexcept;
-        virtual void blinkLED() noexcept = 0;
+        virtual void update() noexcept = 0;
+        void toggleBlinking() noexcept;
         bool isBlinkingLED() const noexcept;
 };

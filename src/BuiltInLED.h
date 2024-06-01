@@ -5,6 +5,10 @@
 class BuiltInLED : public LED {
     public:
         BuiltInLED() noexcept;
-        void blinkLED() noexcept override;
+        virtual ~BuiltInLED() = default;
+        void blinkLED() noexcept;
         void blinkLEDTemp() noexcept;
+        void update() noexcept;
+    private:
+        void toggleLEDState() noexcept;
 };
